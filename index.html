@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Wisata Pucanglaban</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <span class="navbar-title">Wisata Pucanglaban</span>
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="cuaca.html">Cuaca & Radar BMKG</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <h1>🌴 Daftar Wisata Pucanglaban</h1>
+    <input type="text" id="search" placeholder="Cari wisata..." autocomplete="off">
+    <div id="wisata-list" class="wisata-grid"></div>
+    <div id="loading" class="loading">Memuat data...</div>
+    <div id="error" class="error"></div>
+  </div>
+  <!-- Modal Detail Wisata -->
+  <div id="modalDetail" class="modal-detail" style="display:none;">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+  <script>
+    const API_URL = "http://localhost:8000/wisata.php";
+    const list = document.getElementById('wisata-list');
+    const loading = document.getElementById('loading');
+    const error = document.getElementById('error');
+    let wisataData = [];
+
+    function renderStars(rating) {
+      const full = Math.floor(rating);
+      const half = rating % 1 >= 0.5 ? 1 : 0;
+      let stars = '';
+      for(let i=0; i<full; i++) stars += '<i class="ri-star-fill" style="color:#f7b731"></i>';
+      if(half) stars += '<i class="ri-star-half-line" style="color:#f7b731"></i>';
+      for(let i=full+half; i<5; i++) stars += '<i class="ri-star-line" style="color:#f7b731"></i>';
+      return stars;
+    }
+
+    function renderList(data, filter = '') {
+      list.innerHTML = '';
+      const filtered = data.filter(item => item.nama.toLowerCase().includes(filter.toLowerCase()));
+      if (filtered.length === 0) {
+        list.innerHTML = '<p class="notfound">Tidak ada wisata ditemukan.</p>';
+        return;
+      }
+      filtered.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'wisata-card';
+        card.style.cursor = 'pointer';
+        card.innerHTML = `
+          <img src="${item.gambar || 'https://via.placeholder.com/400x200/cccccc/ffffff?text=Wisata'}" alt="${item.nama}" class="wisata-img">
+          <div class="wisata-card-body">
+            <h2>${item.nama}</h2>
+            <div class="wisata-meta">
+              ${item.harga_tiket ? `<span class="badge-harga">Rp ${item.harga_tiket.toLocaleString('id-ID')}</span>` : ''}
+              ${item.rating ? `<span class="badge-rating">${renderStars(item.rating)} <span class="rating-text">(${item.rating})</span></span>` : ''}
+            </div>
+            <div class="wisata-info">
+              <span><i class="ri-map-pin-2-line"></i> ${item.lokasi || '-'}</span>
+              <span><i class="ri-time-line"></i> ${item.jam_buka || '-'} - ${item.jam_tutup || '-'}</span>
+              <span><i class="ri-map-pin-line"></i> ${item.koordinat && item.koordinat.lat && item.koordinat.lng ? item.koordinat.lat + ', ' + item.koordinat.lng : '-'}</span>
+              <span><i class="ri-price-tag-3-line"></i> ${item.kategori || '-'}</span>
+            </div>
+            <div class="wisata-fasilitas">
+              ${(item.fasilitas || []).slice(0,3).map(f => `<span class="fasilitas-badge">${f}</span>`).join('')}
+              ${item.fasilitas && item.fasilitas.length > 3 ? '<span class="fasilitas-badge">...</span>' : ''}
+            </div>
+            <p class="wisata-deskripsi">${item.deskripsi ? item.deskripsi.substring(0, 80) + '...' : ''}</p>
+          </div>
+        `;
+        card.onclick = () => showDetail(idx, filtered);
+        list.appendChild(card);
+      });
+    }
+
+    function showDetail(idx, dataArr) {
+      const item = dataArr[idx];
+      const modal = document.getElementById('modalDetail');
+      const body = document.getElementById('modalBody');
+      body.innerHTML = `
+        <div class="detail-wisata-card">
+          <h1>${item.nama}</h1>
+          <div class="detail-meta">
+            ${item.harga_tiket ? `<span class="badge-harga">Rp ${item.harga_tiket.toLocaleString('id-ID')}</span>` : ''}
+            ${item.rating ? `<span class="badge-rating">${renderStars(item.rating)} <span class="rating-text">(${item.rating})</span></span>` : ''}
+          </div>
+          <p class="detail-deskripsi">${item.deskripsi || ''}</p>
+          <div class="detail-info-grid">
+            <div class="detail-info-card">
+              <i class="ri-map-pin-2-line"></i> <b>Lokasi</b>
+              <div>${item.lokasi || '-'}</div>
+            </div>
+            <div class="detail-info-card">
+              <i class="ri-time-line"></i> <b>Jam Operasional</b>
+              <div>${item.jam_buka && item.jam_tutup ? item.jam_buka + ' - ' + item.jam_tutup : '-'}</div>
+            </div>
+            <div class="detail-info-card">
+              <i class="ri-price-tag-3-line"></i> <b>Kategori</b>
+              <div>${item.kategori || '-'}</div>
+            </div>
+            <div class="detail-info-card">
+              <i class="ri-map-pin-line"></i> <b>Koordinat</b>
+              <div>${item.koordinat && item.koordinat.lat && item.koordinat.lng ? item.koordinat.lat + ', ' + item.koordinat.lng : '-'}</div>
+            </div>
+          </div>
+          <div class="detail-fasilitas">
+            <b><i class="ri-hotel-bed-line"></i> Fasilitas</b>
+            <div class="fasilitas-list">
+              ${(item.fasilitas || []).map(f => `<span class="fasilitas-badge">${f}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modalDetail').style.display = 'none';
+    }
+
+    // Optional: close modal on outside click
+    window.onclick = function(event) {
+      const modal = document.getElementById('modalDetail');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    async function fetchWisata() {
+      try {
+        loading.style.display = 'block';
+        error.textContent = '';
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error('Gagal fetch data');
+        const data = await res.json();
+        wisataData = data;
+        renderList(wisataData);
+      } catch (err) {
+        error.textContent = 'Gagal memuat data wisata.';
+      } finally {
+        loading.style.display = 'none';
+      }
+    }
+
+    document.getElementById('search').addEventListener('input', function() {
+      renderList(wisataData, this.value);
+    });
+
+    fetchWisata();
+  </script>
+</body>
+</html>

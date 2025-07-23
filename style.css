@@ -1,0 +1,664 @@
+body {
+  background: #f4f6fb;
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+  background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+}
+.navbar-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 64px;
+  justify-content: space-between;
+}
+.navbar-title {
+  color: #fff;
+  font-size: 1.4em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+.navbar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+.navbar-menu li a:hover {
+  color: #ffe082;
+}
+/* Tambahan style untuk navigasi aktif dan card cuaca/admin */
+.navbar-menu li a.active {
+  color: #ffe082;
+  font-weight: bold;
+  border-bottom: 2.5px solid #ffe082;
+  padding-bottom: 2px;
+}
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.08);
+  padding: 32px 24px 24px 24px;
+}
+h1 {
+  color: #2c3e50;
+  margin-bottom: 24px;
+  font-size: 2.2em;
+  letter-spacing: 1px;
+}
+#search {
+  width: 100%;
+  max-width: 350px;
+  padding: 12px;
+  border: 1.5px solid #b2bec3;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  font-size: 1em;
+  transition: border 0.2s;
+}
+#search:focus {
+  border: 1.5px solid #6a82fb;
+  outline: none;
+}
+.wisata-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.wisata-card {
+  background: #f9fafc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+  padding: 20px 18px;
+  transition: box-shadow 0.2s;
+}
+.wisata-card:hover {
+  box-shadow: 0 6px 24px rgba(44,62,80,0.13);
+}
+.wisata-card h2 {
+  margin: 0 0 10px 0;
+  color: #6a82fb;
+  font-size: 1.2em;
+}
+.wisata-card p {
+  margin: 6px 0;
+  color: #636e72;
+  font-size: 1em;
+}
+.loading {
+  text-align: center;
+  color: #636e72;
+  margin-top: 30px;
+  font-size: 1.1em;
+}
+.error {
+  color: #d63031;
+  text-align: center;
+  margin-top: 20px;
+}
+.notfound {
+  color: #636e72;
+  text-align: center;
+  font-style: italic;
+  margin-top: 20px;
+}
+.cuaca-card, .admin-card {
+  background: #f9fafc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+  padding: 24px 18px;
+  margin-top: 24px;
+}
+.cuaca-card h2 {
+  color: #6a82fb;
+  margin-bottom: 16px;
+}
+.cuaca-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 12px;
+}
+.cuaca-info > div {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 18px;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+  font-size: 1.1em;
+  min-width: 160px;
+}
+.admin-card {
+  text-align: center;
+  font-size: 1.1em;
+  color: #636e72;
+}
+.cuaca-main-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.08);
+  padding: 28px 24px 24px 24px;
+  margin-bottom: 32px;
+}
+.cuaca-main-card h2 {
+  color: #2c3e50;
+  margin-bottom: 18px;
+  font-size: 1.3em;
+}
+.cuaca-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.cuaca-info > div {
+  background: #f9fafc;
+  border-radius: 10px;
+  padding: 18px 22px;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+  font-size: 1.1em;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cuaca-label {
+  color: #636e72;
+  font-size: 0.95em;
+  margin-top: 4px;
+}
+.cuaca-value {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-top: 2px;
+}
+.cuaca-suhu {
+  color: #e17055;
+  font-size: 1.5em;
+}
+.prakiraan-section {
+  margin-top: 32px;
+}
+.prakiraan-section h3 {
+  color: #2c3e50;
+  margin-bottom: 18px;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.prakiraan-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.prakiraan-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+  padding: 22px 18px;
+  min-width: 160px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.prakiraan-hari {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+.prakiraan-icon {
+  font-size: 2.2em;
+  margin-bottom: 8px;
+}
+.prakiraan-suhu {
+  color: #e17055;
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.prakiraan-ket {
+  color: #636e72;
+  font-size: 1em;
+}
+@media (max-width: 800px) {
+  .cuaca-info, .prakiraan-grid {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .navbar-container, .container {
+    padding: 8px 4px;
+  }
+  .wisata-card {
+    padding: 14px 8px;
+  }
+  .navbar-menu {
+    gap: 12px;
+  }
+}
+.tips-section {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.08);
+  padding: 28px 24px 24px 24px;
+  margin-top: 36px;
+  margin-bottom: 24px;
+}
+.tips-section h3 {
+  color: #2c3e50;
+  margin-bottom: 18px;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tips-card {
+  border-radius: 10px;
+  padding: 18px 18px 12px 18px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.08em;
+}
+.tips-cerah {
+  background: #eafbe7;
+  color: #218c2c;
+}
+.tips-berawan {
+  background: #fff7e6;
+  color: #e67e22;
+}
+.tips-hujan {
+  background: #e6f2fb;
+  color: #2980b9;
+}
+.tips-card span {
+  font-size: 1.1em;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.disclaimer {
+  margin: 32px 0 12px 0;
+  color: #636e72;
+  font-size: 0.98em;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.disclaimer i {
+  color: #f1c40f;
+  font-size: 1.2em;
+}
+.admin-bg {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #6a82fb 0%, #fc5c7d 100%);
+  padding: 48px 0;
+}
+.admin-login-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.13);
+  padding: 38px 32px 28px 32px;
+  max-width: 370px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.admin-login-icon {
+  font-size: 3.2em;
+  margin-bottom: 10px;
+}
+.admin-login-card h2 {
+  color: #2c3e50;
+  margin-bottom: 6px;
+  font-size: 1.6em;
+  font-weight: 700;
+  text-align: center;
+}
+.admin-login-desc {
+  color: #636e72;
+  font-size: 1em;
+  margin-bottom: 18px;
+  text-align: center;
+}
+.admin-login-card label {
+  align-self: flex-start;
+  margin-bottom: 4px;
+  margin-top: 10px;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 1em;
+}
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #f9fafc;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  width: 100%;
+  border: 1.5px solid #e0e0e0;
+  transition: border 0.2s;
+}
+.input-group:focus-within {
+  border: 1.5px solid #6a82fb;
+}
+.input-group i {
+  color: #636e72;
+  font-size: 1.2em;
+  margin-right: 8px;
+}
+.input-group input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1em;
+  flex: 1;
+  padding: 6px 0;
+}
+.toggle-password {
+  cursor: pointer;
+  margin-left: 8px;
+}
+.admin-login-btn {
+  width: 100%;
+  margin-top: 18px;
+  background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.admin-login-btn:hover {
+  opacity: 0.92;
+}
+.admin-back {
+  margin-top: 18px;
+  width: 100%;
+  text-align: center;
+}
+.admin-back a {
+  color: #6a82fb;
+  text-decoration: none;
+  font-size: 0.98em;
+  transition: color 0.2s;
+}
+.admin-back a:hover {
+  color: #fc5c7d;
+}
+@media (max-width: 600px) {
+  .admin-login-card {
+    padding: 18px 6px 18px 6px;
+    max-width: 98vw;
+  }
+}
+.modal-detail {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(44,62,80,0.18);
+  align-items: center;
+  justify-content: center;
+}
+.modal-detail .modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+  padding: 32px 24px 24px 24px;
+  min-width: 320px;
+  max-width: 90vw;
+  position: relative;
+  animation: modalShow 0.2s;
+}
+@keyframes modalShow {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.close-modal {
+  position: absolute;
+  top: 16px; right: 22px;
+  font-size: 2em;
+  color: #6a82fb;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.close-modal:hover {
+  color: #fc5c7d;
+}
+.admin-login-fab {
+  position: fixed;
+  top: 18px;
+  right: 32px;
+  z-index: 1100;
+  background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.13);
+  transition: background 0.2s;
+}
+.admin-login-fab:hover {
+  opacity: 0.92;
+}
+.admin-login-btn {
+  background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  margin-right: 4px;
+  transition: background 0.2s;
+  display: inline-block;
+}
+.admin-login-btn:hover {
+  opacity: 0.92;
+}
+.input-group textarea {
+  min-height: 60px;
+}
+.detail-wisata-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.13);
+  padding: 38px 32px 28px 32px;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+.detail-wisata-card h1 {
+  color: #2c3e50;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+.badge-harga {
+  background: #e74c3c;
+  color: #fff;
+  border-radius: 16px;
+  padding: 4px 16px;
+  font-size: 1em;
+  font-weight: 600;
+  display: inline-block;
+}
+.badge-rating {
+  color: #f7b731;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.rating-text {
+  color: #e67e22;
+  font-size: 0.98em;
+  margin-left: 2px;
+}
+.detail-deskripsi {
+  color: #2d3436;
+  margin-bottom: 18px;
+  font-size: 1.08em;
+}
+.detail-info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.detail-info-card {
+  background: #f9fafc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+  padding: 14px 18px;
+  min-width: 180px;
+  flex: 1 1 180px;
+  font-size: 1em;
+  margin-bottom: 4px;
+}
+.detail-info-card i {
+  color: #6a82fb;
+  margin-right: 4px;
+}
+.detail-fasilitas {
+  margin-top: 18px;
+}
+.fasilitas-list {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.fasilitas-badge {
+  background: #f1f2f6;
+  color: #2d3436;
+  border-radius: 12px;
+  padding: 4px 14px;
+  font-size: 0.98em;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+@media (max-width: 700px) {
+  .detail-wisata-card {
+    padding: 18px 6px 18px 6px;
+    max-width: 98vw;
+  }
+  .detail-info-grid {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+.wisata-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+  padding: 0;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.wisata-card:hover {
+  box-shadow: 0 6px 24px rgba(44,62,80,0.13);
+}
+.wisata-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+.wisata-card-body {
+  padding: 16px 16px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.wisata-card-body h2 {
+  color: #6a82fb;
+  font-size: 1.15em;
+  margin: 0 0 4px 0;
+}
+.wisata-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.wisata-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  font-size: 0.98em;
+  color: #636e72;
+  margin-bottom: 4px;
+}
+.wisata-info i {
+  color: #6a82fb;
+  margin-right: 2px;
+}
+.wisata-fasilitas {
+  margin-bottom: 4px;
+}
+.fasilitas-badge {
+  background: #f1f2f6;
+  color: #2d3436;
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 0.93em;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  display: inline-block;
+}
+.wisata-deskripsi {
+  color: #636e72;
+  font-size: 0.98em;
+  margin: 0;
+}

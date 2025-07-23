@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Daftar Wisata</title>
+</head>
+<body>
+  <h1>Daftar Wisata</h1>
+  <ul id="wisata-list"></ul>
+
+  <script>
+    fetch('wisata.php')
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById('wisata-list');
+        data.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item.nama || JSON.stringify(item);
+          list.appendChild(li);
+        });
+      })
+      .catch(error => {
+        document.body.innerHTML += '<p style="color:red;">Gagal memuat data: ' + error + '</p>';
+      });
+  </script>
+</body>
+</html> 

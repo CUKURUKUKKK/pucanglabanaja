@@ -1,0 +1,138 @@
+[
+  {
+    "id": 1,
+    "nama": "Pantai Kedung Tumpang",
+    "deskripsi": "Pantai dengan formasi batuan yang unik dan kolam alami berwarna tosca yang jernih. Terkenal dengan pemandangan pantai berbatu dengan ombak yang menghantam tebing. Cocok untuk fotografi dan menikmati keindahan alam.",
+    "lokasi": "Desa Pucanglaban, Kecamatan Pucanglaban, Tulungagung",
+    "koordinat": {
+      "lat": -8.303133864288524,
+      "lng": 112.01025009554948
+    },
+    "fasilitas": ["Parkir", "Warung", "Toilet", "Tempat Ganti", "Area Foto"],
+    "harga_tiket": 5000,
+    "jam_buka": "06:00",
+    "jam_tutup": "18:00",
+    "gambar": "https://images.app.goo.gl/jzhoueqJ2Kn46kYq5",
+    "rating": 4.8,
+    "kategori": "Pantai"
+  },
+  {
+    "id": 2,
+    "nama": "Pantai Dlodo",
+    "deskripsi": "Pantai dengan pasir putih yang lembut dan air jernih. Cocok untuk berenang, bersantai, dan menikmati sunset. Memiliki pemandangan yang indah dengan pohon kelapa di tepi pantai.",
+    "lokasi": "Desa Pucanglaban, Kecamatan Pucanglaban, Tulungagung",
+    "koordinat": {
+      "lat": -8.30008683413661, 
+      "lng":  112.00869700652419 
+    },
+    "fasilitas": ["Parkir", "Warung", "Toilet", "Tempat Ganti", "Gazebo"],
+    "harga_tiket": 3000,
+    "jam_buka": "06:00",
+    "jam_tutup": "18:00",
+    "gambar": "https://images.app.goo.gl/UuV7RSxUgiTe3YfK9",
+    "rating": 4.5,
+    "kategori": "Pantai"
+  },
+  {
+    "id": 3,
+    "nama": "Pantai Lumbung",
+    "deskripsi": "Pantai yang tenang dengan ombak yang tidak terlalu besar, cocok untuk keluarga. Memiliki area bermain anak dan tempat berkemah.",
+    "lokasi": "Desa Pucanglaban, Kecamatan Pucanglaban, Tulungagung",
+    "koordinat": {
+      "lat": -8.30359373404925, 
+      "lng": 112.02013326417816
+    },
+    "fasilitas": ["Parkir", "Warung", "Toilet", "Area Camping", "Taman Bermain"],
+    "harga_tiket": 4000,
+    "jam_buka": "06:00",
+    "jam_tutup": "18:00",
+    "gambar": "https://images.app.goo.gl/xmFGe5CsypqS8yxv8",
+    "rating": 4.3,
+    "kategori": "Pantai"
+  },
+  {
+    "id": 4,
+    "nama": "Pantai Pacar",
+    "deskripsi": "Pantai yang romantis dengan pemandangan sunset yang indah. Cocok untuk pasangan yang ingin menghabiskan waktu bersama.",
+    "lokasi": "Desa Pucanglaban, Kecamatan Pucanglaban, Tulungagung",
+    "koordinat": {
+      "lat": -8.306713994013332, 
+      "lng": 112.02407492627707
+    },
+    "fasilitas": ["Parkir", "Warung", "Toilet", "Gazebo Romantis"],
+    "harga_tiket": 3500,
+    "jam_buka": "06:00",
+    "jam_tutup": "18:00",
+    "gambar": "https://images.app.goo.gl/ABbEULjvBVn69m1Q6",
+    "rating": 4.6,
+    "kategori": "Pantai"
+  },
+  {
+    "id": 5,
+    "nama": "Pantai Kelinci",
+    "deskripsi": "Pantai dengan formasi batuan yang menyerupai kelinci. Terkenal dengan spot foto yang unik dan pemandangan yang eksotis.",
+    "lokasi": "Desa Pucanglaban, Kecamatan Pucanglaban, Tulungagung",
+    "koordinat": {
+      "lat": -8.301630977170989, 
+      "lng": 112.01667477356234
+    },
+    "fasilitas": ["Parkir", "Warung", "Toilet", "Spot Foto"],
+    "harga_tiket": 4000,
+    "jam_buka": "06:00",
+    "jam_tutup": "18:00",
+    "gambar": "https://images.app.goo.gl/eTYqGR7DgXFSi68g9",
+    "rating": 4.4,
+    "kategori": "Pantai"
+  },
+  {
+    "id": 6,
+    "nama": "Pantai Molang",
+    "deskripsi": "Pantai yang masih alami dengan pemandangan yang masih perawan. Cocok untuk yang ingin mencari ketenangan dan keindahan alam.",
+    "lokasi": "Desa Pucanglaban, Kecamatan Pucanglaban, Tulungagung",
+    "koordinat": {
+      "lat": -8.311878985145096, 
+      "lng": 112.02782326485969
+    },
+    "fasilitas": ["Parkir", "Warung Sederhana", "Toilet"],
+    "harga_tiket": 2000,
+    "jam_buka": "06:00",
+    "jam_tutup": "18:00",
+    "gambar": "https://images.app.goo.gl/T4nXtZjt1f49Ym9Z9",
+    "rating": 4.2,
+    "kategori": "Pantai"
+  },
+  {
+    "id": 7,
+    "nama": "Tanjakan Lok Songo",
+    "deskripsi": "Tanjakan yang terkenal dengan pemandangan yang indah dari ketinggian. Cocok untuk fotografi landscape dan menikmati panorama alam.",
+    "lokasi": "Desa Pucanglaban, Kecamatan Pucanglaban, Tulungagung",
+    "koordinat": {
+      "lat": -8.170686495757286, 
+      "lng": 112.01880430909007
+    },
+    "fasilitas": ["Parkir", "Warung", "Pos Keamanan", "Area Foto"],
+    "harga_tiket": 1000,
+    "jam_buka": "24 Jam",
+    "jam_tutup": "24 Jam",
+    "gambar": "https://images.app.goo.gl/KgFNJ2af67nf7YCDA",
+    "rating": 4.0,
+    "kategori": "Tanjakan"
+  },
+  {
+    "id": 8,
+    "nama": "Pasar Puser Desa Sumberdadap",
+    "deskripsi": "Pasar tradisional yang menjual berbagai produk lokal dan kuliner khas. Tempat yang cocok untuk berbelanja oleh-oleh dan mencicipi makanan tradisional.",
+    "lokasi": "Desa Sumberdadap, Kecamatan Pucanglaban, Tulungagung",
+    "koordinat": {
+      "lat": -8.30008683413661, 
+      "lng":  112.00869700652419 
+    },
+    "fasilitas": ["Parkir", "Warung Makan", "Toilet", "Tempat Sampah"],
+    "harga_tiket": 0,
+    "jam_buka": "06:00",
+    "jam_tutup": "17:00",
+    "gambar": "https://images.app.goo.gl/9WRKcdSeiZ9ooMMX6",
+    "rating": 4.1,
+    "kategori": "Pasar"
+  }
+] 
